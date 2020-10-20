@@ -18,6 +18,7 @@
  */
 
 #include "pmc/pmc_maxclique.h"
+#include "pmc/debug.hpp"
 
 using namespace std;
 using namespace pmc;
@@ -122,7 +123,7 @@ void pmc_maxclique::branch(
                         print_mc_info(C,sec);
                         if (mc >= param_ub) {
                             not_reached_ub = false;
-                            cout << "[pmc: upper bound reached]  omega = " << mc <<endl;
+                            DEBUG_MSG("[pmc: upper bound reached]  omega = " + std::to_string(mc));
                         }
                     }
 

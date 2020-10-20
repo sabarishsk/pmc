@@ -49,7 +49,7 @@ namespace pmc {
             double avg_degree;
             bool is_gstats;
             string fn;
-            vector<vector<bool>> adj;
+            vector<vector<bool> > adj;
 
             // constructor
             pmc_graph(const string& filename);

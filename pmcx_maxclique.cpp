@@ -18,6 +18,7 @@
  */
 
 #include "pmc/pmcx_maxclique.h"
+#include "pmc/debug.hpp"
 
 using namespace std;
 using namespace pmc;
@@ -54,7 +55,7 @@ int pmcx_maxclique::search(pmc_graph& G, vector<int>& sol) {
     vector<Vertex> V;
     V.reserve(G.num_vertices());
     G.order_vertices(V,G,lb_idx,lb,vertex_ordering,decr_order);
-    cout << "|V| = " << V.size() <<endl;
+    DEBUG_MSG("|V| = " + std::to_string(V.size()));
 
     vector<short> ind(G.num_vertices(),0);
     vector<int> es = G.get_edges_array();
@@ -154,7 +155,7 @@ void pmcx_maxclique::branch(
                         print_mc_info(C,sec);
                         if (mc >= param_ub) {
                             not_reached_ub = false;
-                            cout << "[pmc: upper bound reached]  omega = " << mc <<endl;
+                            DEBUG_MSG("[pmc: upper bound reached]  omega = " + std::to_string(mc));
                         }
                     }
                 }
@@ -208,7 +209,7 @@ int pmcx_maxclique::search_dense(pmc_graph& G, vector<int>& sol) {
     vector<Vertex> V;
     V.reserve(G.num_vertices());
     G.order_vertices(V,G,lb_idx,lb,vertex_ordering,decr_order);
-    cout << "|V| = " << V.size() <<endl;
+    DEBUG_MSG("|V| = " + std::to_string(V.size()));
 
     vector<short> ind(G.num_vertices(),0);
     vector<int> es = G.get_edges_array();
@@ -311,7 +312,7 @@ void pmcx_maxclique::branch_dense(
                         print_mc_info(C,sec);
                         if (mc >= param_ub) {
                             not_reached_ub = false;
-                            cout << "[pmc: upper bound reached]  omega = " << mc <<endl;
+                            DEBUG_MSG("[pmc: upper bound reached]  omega = " + std::to_string(mc));
                         }
                     }
                 }

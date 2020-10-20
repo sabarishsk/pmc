@@ -69,19 +69,24 @@ string memory_usage() {
 }
 
 void indent(int level, string str) {
+    #ifdef NDEBUG
     for (int i = 0; i < level; i++)
         cout << "   ";
     cout << "(" << level << ") ";
+    #endif
 }
 
 void print_max_clique(vector<int>& C) {
+    #ifdef NDEBUG
     cout << "Maximum clique: ";
     for(int i = 0; i < C.size(); i++)
         cout << C[i] + 1 << " ";
     cout << endl;
+    #endif
 }
 
 void print_n_maxcliques(set< vector<int> > C, int n) {
+    #ifdef NDEBUG
     set< vector<int> >::iterator it;
     int mc = 0;
     for( it = C.begin(); it != C.end(); it++) {
@@ -95,6 +100,7 @@ void print_n_maxcliques(set< vector<int> > C, int n) {
         }
         else break;
     }
+    #endif
 }
 
 

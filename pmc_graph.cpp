@@ -18,6 +18,7 @@
  */
 
 #include "pmc/pmc_graph.h"
+#include "pmc/debug.hpp"
 
 using namespace pmc;
 using namespace std;
@@ -73,12 +74,14 @@ void pmc_graph::read_graph(const string& filename) {
 }
 
 void pmc_graph::basic_stats(double sec) {
+    #ifndef NDEBUG
     cout << "Reading time " << get_time() - sec << endl;
     cout << "|V|: " << num_vertices() <<endl;
     cout << "|E|: " << num_edges() <<endl;
     cout << "p: " << density() <<endl;
     cout << "d_max: " << get_max_degree() <<endl;
     cout << "d_avg: " << get_avg_degree() <<endl;
+    #endif
 }
 
 
@@ -608,8 +611,8 @@ void pmc_graph::degree_bucket_sort(bool desc) {
         }
     }
 
-    cout << "[pmc: sorting neighbors]  |E| = " << edges.size();
-    cout << ", |E_sorted| = " << tmp_edges.size() <<endl;
+    DEBUG_MSG( "[pmc: sorting neighbors]  |E| = " + std::to_string(edges.size()));
+    DEBUG_MSG(", |E_sorted| = " + std::to_string(tmp_edges.size()));
     edges = tmp_edges;
 }
 

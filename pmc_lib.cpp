@@ -18,6 +18,7 @@
  */
 
 #include "pmc/pmc.h"
+#include "pmc/debug.hpp"
 
 using namespace std;
 using namespace pmc;
@@ -34,7 +35,7 @@ int max_clique(long long nedges, int *ei, int *ej, int index_offset,
     //! ensure wait time is greater than the time to recompute the graph data structures
     if (G.num_edges() > 1000000000 && in.remove_time < 120)  in.remove_time = 120;
     else if (G.num_edges() > 250000000 && in.remove_time < 10) in.remove_time = 10;
-    cout << "explicit reduce is set to " << in.remove_time << " seconds" <<endl;
+    DEBUG_MSG("explicit reduce is set to " + std::to_string(in.remove_time) + " seconds");
     
     double seconds = get_time();
     G.compute_cores();
